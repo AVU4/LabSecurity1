@@ -1,6 +1,5 @@
 package Algorithm;
 
-import java.util.Arrays;
 
 public class DecryptorBigram implements ConverterBigram {
 
@@ -16,17 +15,17 @@ public class DecryptorBigram implements ConverterBigram {
 
         char[] newBigram;
 
-        newBigram = checkOneColumn(bigram);
+        newBigram = searchInOneColumn(bigram);
         if (newBigram != null) {
             return  newBigram;
         }
 
-        newBigram = checkOneRow(bigram);
+        newBigram = searchInOneRow(bigram);
         if (newBigram != null) {
             return newBigram;
         }
 
-        newBigram = checkBox(bigram);
+        newBigram = makeRectangle(bigram);
         if (newBigram != null) {
             return newBigram;
         }
@@ -35,7 +34,7 @@ public class DecryptorBigram implements ConverterBigram {
     }
 
 
-    private char[] checkOneColumn(char[] bigram) {
+    private char[] searchInOneColumn(char[] bigram) {
 
         char[] newBigram = new char[2];
 
@@ -69,7 +68,7 @@ public class DecryptorBigram implements ConverterBigram {
         return null;
     }
 
-    private char[] checkOneRow(char[] bigram) {
+    private char[] searchInOneRow(char[] bigram) {
 
         char[] newBigram = new char[2];
 
@@ -105,7 +104,7 @@ public class DecryptorBigram implements ConverterBigram {
         return null;
     }
 
-    private char[] checkBox(char[] bigram) {
+    private char[] makeRectangle(char[] bigram) {
 
         char[] newBigram = new char[2];
 

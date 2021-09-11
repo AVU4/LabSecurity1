@@ -1,10 +1,8 @@
 package IO;
 
 import Algorithm.ConverterBigram;
-import Algorithm.DecryptorBigram;
 
 import java.io.*;
-import java.math.BigInteger;
 
 public class FileConverter {
 
@@ -12,12 +10,21 @@ public class FileConverter {
     private ConverterBigram converterBigram;
     private StringBuilder stringBuilder;
 
-    public FileConverter(File file, ConverterBigram converterBigram) {
-        this.file = file;
+    public FileConverter() {
         this.stringBuilder = new StringBuilder();
+    }
+
+    public void setConverterBigram(ConverterBigram converterBigram) {
         this.converterBigram = converterBigram;
     }
 
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    public File getFile() {
+        return file;
+    }
 
     public void transform() {
         if (converterBigram != null) {
@@ -44,6 +51,8 @@ public class FileConverter {
         ) {
             bufferedWriter.write(stringBuilder.toString());
             bufferedWriter.flush();
+            stringBuilder.delete(0, stringBuilder.length());
+            System.out.println("The file was transformed");
         }catch (IOException exception) {
             System.out.println("Didn't manage to write to the file");
         }

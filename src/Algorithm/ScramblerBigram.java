@@ -13,17 +13,17 @@ public class ScramblerBigram implements ConverterBigram {
 
         char[] newBigram;
 
-        newBigram = checkOneColumn(bigram);
+        newBigram = searchInOneColumn(bigram);
         if (newBigram != null) {
             return newBigram;
         }
 
-        newBigram = checkOneRow(bigram);
+        newBigram = searchInOneRow(bigram);
         if (newBigram != null) {
             return newBigram;
         }
 
-        newBigram = checkBox(bigram);
+        newBigram = makeRectangle(bigram);
         if (newBigram != null) {
             return newBigram;
         }
@@ -31,7 +31,7 @@ public class ScramblerBigram implements ConverterBigram {
         return bigram;
     }
 
-    private char[] checkOneColumn(char[] bigram) {
+    private char[] searchInOneColumn(char[] bigram) {
 
         char[] newBigram = new char[2];
 
@@ -66,7 +66,7 @@ public class ScramblerBigram implements ConverterBigram {
     }
 
 
-    private char[] checkOneRow(char[] bigram) {
+    private char[] searchInOneRow(char[] bigram) {
 
         char[] newBigram = new char[2];
 
@@ -102,7 +102,7 @@ public class ScramblerBigram implements ConverterBigram {
         return null;
     }
 
-    private char[] checkBox(char[] bigram) {
+    private char[] makeRectangle(char[] bigram) {
 
         char[] newBigram = new char[2];
 
