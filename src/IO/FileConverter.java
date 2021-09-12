@@ -1,21 +1,21 @@
 package IO;
 
-import Algorithm.ConverterBigram;
+import Algorithm.ConverterBigramm;
 
 import java.io.*;
 
 public class FileConverter {
 
     private File file;
-    private ConverterBigram converterBigram;
+    private ConverterBigramm converterBigramm;
     private StringBuilder stringBuilder;
 
     public FileConverter() {
         this.stringBuilder = new StringBuilder();
     }
 
-    public void setConverterBigram(ConverterBigram converterBigram) {
-        this.converterBigram = converterBigram;
+    public void setConverterbigramm(ConverterBigramm converterBigramm) {
+        this.converterBigramm = converterBigramm;
     }
 
     public void setFile(File file) {
@@ -27,16 +27,16 @@ public class FileConverter {
     }
 
     public void transform() {
-        if (converterBigram != null) {
+        if (converterBigramm != null) {
             try(
                     BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             ) {
-                char[] bigram = new char[2];
+                char[] bigramm = new char[2];
                 int size;
-                while ((size = bufferedReader.read(bigram)) != -1) {
-                    if (size == 1) bigram[1] = ' ';
-                    char[] newBigram = converterBigram.transform(bigram);
-                    stringBuilder.append(newBigram);
+                while ((size = bufferedReader.read(bigramm)) != -1) {
+                    if (size == 1) bigramm[1] = ' ';
+                    char[] newBigramm = converterBigramm.transform(bigramm);
+                    stringBuilder.append(newBigramm);
                 }
                 writeFile();
             } catch (IOException exception) {

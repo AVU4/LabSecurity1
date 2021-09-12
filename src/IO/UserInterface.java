@@ -1,9 +1,9 @@
 package IO;
 
-import Algorithm.ConverterBigram;
-import Algorithm.DecryptorBigram;
-import Algorithm.ScramblerBigram;
-import Algorithm.TableBigram;
+import Algorithm.ConverterBigramm;
+import Algorithm.DecryptorBigramm;
+import Algorithm.ScramblerBigramm;
+import Algorithm.TableBigramm;
 
 import java.io.File;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ public class UserInterface {
 
         FileConverter fileConverter = new FileConverter();
         boolean encryptMode = true;
-        TableBigram tableBigram = null;
+        TableBigramm tableBigramm = null;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type the command");
         while (true){
@@ -38,7 +38,7 @@ public class UserInterface {
                         System.out.println("Incorrect keyword");
                         keyword = scanner.nextLine();
                     }
-                    tableBigram = TableBigram.createTableBigram(keyword);
+                    tableBigramm = TableBigramm.createTableBigramm(keyword);
                     System.out.println("The alphabet was created");
                     break;
                 case "set-file" :
@@ -64,14 +64,14 @@ public class UserInterface {
                     }
                     break;
                 case "start" :
-                    if (tableBigram != null && fileConverter.getFile() != null) {
-                        ConverterBigram converterBigram;
+                    if (tableBigramm != null && fileConverter.getFile() != null) {
+                        ConverterBigramm converterBigramm;
                         if (encryptMode) {
-                            converterBigram = new ScramblerBigram(tableBigram);
+                            converterBigramm = new ScramblerBigramm(tableBigramm);
                         } else {
-                            converterBigram = new DecryptorBigram(tableBigram);
+                            converterBigramm = new DecryptorBigramm(tableBigramm);
                         }
-                        fileConverter.setConverterBigram(converterBigram);
+                        fileConverter.setConverterbigramm(converterBigramm);
                         fileConverter.transform();
                     } else {
                         System.out.println("You forgot to set any parameters");
